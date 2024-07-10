@@ -19,7 +19,7 @@ class TripsRepository:
                 trips_infos["start_date"],
                 trips_infos["end_date"],
                 trips_infos["owner_name"],
-                trips_infos["owner_email"],
+                trips_infos["owner_email"]
             )
         )
         self.__conn.commit()
@@ -27,14 +27,11 @@ class TripsRepository:
     def find_trip_by_id(self, trip_id: str) -> Tuple:
         cursor = self.__conn.cursor()
         cursor.execute(
-            '''
-                SELECT * FROM trips WHERE id = ?
-            ''',
-            (trip_id,)
+            '''SELECT * FROM trips WHERE id = ?''', (trip_id,)
         )
         trip = cursor.fetchone()
         return trip
-    
+
     def update_trip_status(self, trip_id: str) -> None:
         cursor = self.__conn.cursor()
         cursor.execute(
@@ -43,8 +40,6 @@ class TripsRepository:
                     SET status = 1
                 WHERE
                     id = ?
-            ''',
-            (trip_id,)
+            ''', (trip_id,)
         )
         self.__conn.commit()
-    

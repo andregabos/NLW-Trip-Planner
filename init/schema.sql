@@ -5,7 +5,7 @@ CREATE TABLE IF NOT EXISTS 'trips' (
     end_date DATETIME,
     owner_name TEXT NOT NULL,
     owner_email TEXT NOT NULL,
-    status INTEGER -- 1 para verdadeiro (true), 0 para falso (false)
+    status INTEGER
 );
 
 CREATE TABLE IF NOT EXISTS 'emails_to_invite' (
@@ -28,7 +28,7 @@ CREATE TABLE IF NOT EXISTS 'participants' (
     trip_id TEXT NOT NULL,
     emails_to_invite_id TEXT NOT NULL,
     name TEXT NOT NULL,
-    is_confirmed INTEGER, -- 1 para verdadeiro (true), 0 para falso (false)
+    is_confirmed INTEGER,
     FOREIGN KEY (trip_id) REFERENCES trips(id),
     FOREIGN KEY (emails_to_invite_id) REFERENCES emails_to_invite(id)
 );

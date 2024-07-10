@@ -24,12 +24,7 @@ class EmailsToInviteRepository:
     def find_emails_from_trip(self, trip_id: str) -> List[Tuple]:
         cursor = self.__conn.cursor()
         cursor.execute(
-            '''
-                SELECT * FROM emails_to_invite WHERE trip_id = ?
-            ''',
-            (trip_id,)
+            '''SELECT * FROM emails_to_invite WHERE trip_id = ?''', (trip_id,)
         )
-        trip = cursor.fetchall()
-        return trip
-
-    
+        emails = cursor.fetchall()
+        return emails
